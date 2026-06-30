@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+  <title>CareConnect</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- SVG icon sprite (inline; meaning never relies on color alone) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.9-9.7-9.3C.6 8.1 2.4 4.5 6 4.5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2 3.6 0 5.4 3.6 3.7 7.2C19.5 16.1 12 21 12 21z"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="currentColor" d="M13 2L4 14h6l-1 8 9-12h-6z"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M20 21a8 8 0 10-16 0"/><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <!-- Gear: Lucide "settings" (MIT licensed) -->
+      <symbol id="i-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-4-4"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" d="M3 7l9 6 9-6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 12l3 3 5-6"/></symbol>
+      <symbol id="i-warn" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l9 16H3z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 9v5M12 17v.01"/></symbol>
+      <symbol id="i-error" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v6M12 16v.01"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 11v5M12 8v.01"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ====================== LOGIN ====================== -->
+  <main id="login" class="login-wrap">
+    <form class="login-card" id="login-form" novalidate aria-labelledby="login-title">
+      <div class="brand">
+        <span class="logo"><svg width="20" height="20"><use href="#i-heart"/></svg></span>
+        <span class="brand-name">CareConnect</span>
+      </div>
+      <h1 id="login-title">Welcome back</h1>
+      <p class="login-sub">Sign in to access your health portal.</p>
+
+      <div class="field">
+        <label for="email">Email address</label>
+        <input class="input" id="email" name="email" type="email"
+               autocomplete="username" placeholder="you@example.com"
+               aria-describedby="email-err" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input class="input" id="password" name="password" type="password"
+                 autocomplete="current-password" placeholder="Enter your password"
+                 aria-describedby="password-err" required />
+          <button type="button" class="btn-icon input-suffix" id="toggle-pw"
+                  aria-label="Show password" aria-pressed="false">
+            <svg width="20" height="20"><use href="#i-eye"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="login-row">
+        <label class="check-row">
+          <input type="checkbox" id="remember" /> Remember me
+        </label>
+        <a href="#" id="forgot">Forgot password?</a>
+      </div>
+
+      <div id="login-error" class="error-text hidden" role="alert" aria-live="assertive"></div>
+
+      <button class="btn btn-lg btn-block" id="signin" type="submit">Sign In</button>
+
+      <hr class="login-divider" />
+      <div class="toggle-row between">
+        <span class="toggle-label" id="hc-label-login">High contrast mode</span>
+        <label class="switch">
+          <input type="checkbox" id="hc-login" role="switch"
+                 aria-checked="false" aria-labelledby="hc-label-login" />
+          <span class="track"><span class="thumb"></span></span>
+        </label>
+      </div>
+    </form>
+  </main>
+
+  <!-- ====================== APP SHELL ====================== -->
+  <div class="app" id="app" aria-hidden="true">
+    <!-- Toolbar (contextual, consistent across screens) -->
+    <div class="toolbar" role="toolbar" aria-label="Primary actions" id="toolbar">
+      <div class="tool-tabs" id="tool-tabs">
+        <button class="tool-btn" data-screen="dashboard" aria-current="page">
+          <svg width="18" height="18"><use href="#i-home"/></svg> Home
+        </button>
+        <button class="tool-btn" data-screen="notifications">
+          <svg width="18" height="18"><use href="#i-bell"/></svg> Notifications
+          <span class="count-badge" id="tool-notif-count">4</span>
+        </button>
+        <button class="tool-btn" data-screen="profile">
+          <svg width="18" height="18"><use href="#i-user"/></svg> Profile
+        </button>
+        <button class="tool-btn" data-screen="settings">
+          <svg width="18" height="18"><use href="#i-gear"/></svg> Settings
+        </button>
+      </div>
+      <div class="toolbar-spacer"></div>
+      <div class="search">
+        <span class="search-icon"><svg width="18" height="18"><use href="#i-search"/></svg></span>
+        <input class="input" id="search" type="search" placeholder="Search… (Ctrl+F)"
+               aria-label="Search CareConnect" />
+      </div>
+      <button class="btn-tertiary btn btn-sm" id="toggle-panel-btn" aria-pressed="false">Hide Panel</button>
+    </div>
+
+    <div class="app-body" id="app-body">
+      <!-- Sidebar -->
+      <nav class="sidebar" aria-label="Main navigation">
+        <div class="user-card">
+          <span class="avatar" id="uc-avatar" aria-hidden="true">AR</span>
+          <span>
+            <span class="name" id="uc-name">Alex Rivera</span><br>
+            <span class="role" id="uc-role">Administrator</span>
+          </span>
+        </div>
+        <div class="side-nav" id="side-nav">
+          <button class="side-link" data-screen="dashboard" aria-current="page">
+            <svg width="18" height="18"><use href="#i-home"/></svg> Dashboard
+          </button>
+          <button class="side-link" data-screen="notifications">
+            <svg width="18" height="18"><use href="#i-bell"/></svg> Notifications
+            <span class="count-badge" id="side-notif-count">4</span>
+          </button>
+          <button class="side-link" data-screen="profile">
+            <svg width="18" height="18"><use href="#i-user"/></svg> Profile
+          </button>
+          <button class="side-link" data-screen="settings">
+            <svg width="18" height="18"><use href="#i-gear"/></svg> Settings
+          </button>
+        </div>
+      </nav>
+
+      <!-- Content (screens render here) -->
+      <main class="content" id="main" tabindex="-1"></main>
+
+      <!-- Right panel -->
+      <aside class="right-panel" id="right-panel" aria-label="Quick info">
+        <div class="panel-title">Quick info</div>
+        <div class="info-card info">
+          <div class="info-card-title">Next Maintenance</div>
+          <div>Sat, 28 Jun — 02:00 UTC</div>
+        </div>
+        <div class="info-card success">
+          <div class="info-card-title">System Status</div>
+          <div>All systems operational</div>
+        </div>
+        <div class="panel-title mt-3">Keyboard shortcuts</div>
+        <ul class="shortcut-list">
+          <li><span>Dashboard</span> <span class="kbd">Ctrl+1</span></li>
+          <li><span>Notifications</span> <span class="kbd">Ctrl+2</span></li>
+          <li><span>Search</span> <span class="kbd">Ctrl+F</span></li>
+          <li><span>Settings</span> <span class="kbd">Ctrl+,</span></li>
+          <li><span>Close / Cancel</span> <span class="kbd">Esc</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal mount + live region -->
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+  <div id="live-status" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

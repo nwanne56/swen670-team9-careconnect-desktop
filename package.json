@@ -1,0 +1,15 @@
+{
+  "name": "careconnect-desktop",
+  "version": "0.1.0",
+  "description": "CareConnect — desktop-first, keyboard-first, WCAG 2.2 AA health portal (Electron starter).",
+  "main": "src/main.js",
+  "author": "SWEN 661 — Week 7",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --enable-logging"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0"
+  }
+}
