@@ -4,7 +4,7 @@ A desktop-first and keyboard-first, WCAG 2.2 AA rebuild of the CareConnect
 health portal. This is the Electron starter app deliverable: it runs
 locally and wires up the full set of CareConnect screens.
 
-![CareConnect dashboard](../screens/dashboard.png)
+![CareConnect dashboard](./figma-screens/dashboard.png)
 
 The app opens on a login screen. Once you are in, it gives you a native menu bar with
 real accelerators (File, Edit, View, Help), a contextual toolbar, a sidebar, and a
