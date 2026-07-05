@@ -10,6 +10,20 @@
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const keyboardUtils = window.CareConnectKeyboardUtils || {};
+const rovingKeys = keyboardUtils.rovingKeys || function fallbackRovingKeys(e, items, currentIndex, orientation = 'horizontal') {
+  const nextKey = orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
+  const prevKey = orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';
+  let idx = currentIndex;
+  if (e.key === nextKey) idx = (currentIndex + 1) % items.length;
+  else if (e.key === prevKey) idx = (currentIndex - 1 + items.length) % items.length;
+  else if (e.key === 'Home') idx = 0;
+  else if (e.key === 'End') idx = items.length - 1;
+  else return false;
+  e.preventDefault();
+  items[idx].focus();
+  return true;
+};
 const el = (tag, props = {}, children = []) => {
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(props)) {
@@ -426,21 +440,30 @@ function settingsPanel(tab) {
   }
 
   if (tab === 'keyboard') {
-    const rows = SHORTCUTS.map((s) =>
-      el('tr', {}, [
-        el('td', { html: `<span class="kbd">${s.keys.replace(/ \/ /g, '</span> / <span class="kbd">')}</span>` }),
-        el('td', { text: s.action }),
-        el('td', { class: 'muted', text: s.screen })
-      ])
-    );
-    return wrap([
-      el('p', { class: 'muted', text: 'All shortcuts use standard desktop conventions.' }),
-      el('table', { class: 'shortcut-table mt-2' }, [
+    const tableHost = el('div', { id: 'keyboard-shortcuts-react' });
+    const reactWidgets = window.CareConnectReactWidgets || {};
+    const renderShortcutTable = reactWidgets.renderKeyboardShortcutTable;
+    if (typeof renderShortcutTable === 'function') {
+      renderShortcutTable(tableHost, SHORTCUTS);
+    } else {
+      const rows = SHORTCUTS.map((s) =>
+        el('tr', {}, [
+          el('td', { html: `<span class="kbd">${s.keys.replace(/ \/ /g, '</span> / <span class="kbd">')}</span>` }),
+          el('td', { text: s.action }),
+          el('td', { class: 'muted', text: s.screen })
+        ])
+      );
+      tableHost.appendChild(el('table', { class: 'shortcut-table mt-2' }, [
         el('thead', {}, el('tr', {}, [
           el('th', { text: 'Shortcut' }), el('th', { text: 'Action' }), el('th', { text: 'Screen' })
         ])),
         el('tbody', {}, rows)
-      ])
+      ]));
+    }
+
+    return wrap([
+      el('p', { class: 'muted', text: 'All shortcuts use standard desktop conventions.' }),
+      tableHost
     ]);
   }
 
@@ -780,19 +803,6 @@ function openAbout() {
 /* ============================================================================
    ARROW-KEY NAVIGATION for toolbar / sidebar / tablist (roving)
    ============================================================================ */
-function rovingKeys(e, items, currentIndex, orientation = 'horizontal') {
-  const nextKey = orientation === 'horizontal' ? 'ArrowRight' : 'ArrowDown';
-  const prevKey = orientation === 'horizontal' ? 'ArrowLeft' : 'ArrowUp';
-  let idx = currentIndex;
-  if (e.key === nextKey) idx = (currentIndex + 1) % items.length;
-  else if (e.key === prevKey) idx = (currentIndex - 1 + items.length) % items.length;
-  else if (e.key === 'Home') idx = 0;
-  else if (e.key === 'End') idx = items.length - 1;
-  else return false;
-  e.preventDefault();
-  items[idx].focus();
-  return true;
-}
 
 function handleTablistKeys(e, tab) {
   const items = $$('.tabs .tab');
