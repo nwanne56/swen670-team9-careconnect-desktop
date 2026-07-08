@@ -1,8 +1,8 @@
-# CareConnect - Desktop (Electron), SWEN 661 - Week 7
+# CareConnect - Desktop (Electron + React), SWEN 661 - Week 8
 
 A desktop-first and keyboard-first, WCAG 2.2 AA rebuild of the CareConnect
-health portal. This is the Electron starter app deliverable: it runs
-locally and wires up the full set of CareConnect screens.
+health portal. It includes native menus, keyboard shortcuts, React-based
+renderer widgets, keyboard navigation testing, and Windows packaging support.
 
 ![CareConnect dashboard](./figma-screens/dashboard.png)
 
@@ -33,17 +33,37 @@ Electron down with it.
 There is no backend, so any reasonable-looking email and any non-empty password will
 sign you in. Try `you@example.com` with `password`.
 
+## Test and coverage
+
+```bash
+npm test
+```
+
+Jest + React Testing Library are configured with coverage thresholds aligned to
+the Week 8 requirement (minimum 60%).
+
+## Package (Windows)
+
+```bash
+npm run package:win
+```
+
 ## Project layout
 
 ```
 careconnect-desktop/
+├─ test/
+│  ├─ keyboard-utils.test.js
+│  └─ react-widgets.test.js
 ├─ src/
 │  ├─ main.js            # Electron main process and the native menu bar
 │  ├─ preload.js         # contextBridge: menu channel and auth state (no Node in the renderer)
 │  └─ renderer/
 │     ├─ index.html      # App shell, SVG icon sprite, login and shell markup
 │     ├─ styles.css      # Design system: tokens, light and high-contrast themes, components
-│     └─ app.js          # Routing, screen rendering, keyboard, focus, accessibility settings
+│     ├─ keyboard-utils.js # Shared roving keyboard navigation utility
+│     ├─ react-widgets.js  # React widget renderer used in settings
+│     └─ app.js            # Routing, screen rendering, keyboard, focus, accessibility settings
 └─ docs/
    ├─ KEYBOARD_SHORTCUTS.md   # The full shortcut sheet
    └─ ACCESSIBILITY.md        # Focus order, focus states, WCAG mapping
