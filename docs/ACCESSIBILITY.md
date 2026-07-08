@@ -133,9 +133,30 @@ leading edge as well. The setting takes effect right away and is remembered. Swa
 mouse buttons and the operating system pointer-handedness setting are out of scope, since
 those belong to the system rather than the app.
 
+## Automated testing
+
+axe-core now runs in the Jest suite through `jest-axe`. The test in
+[test/accessibility.test.js](../test/accessibility.test.js) loads the shipped `index.html`
+into jsdom and audits both the login screen and the signed-in app shell, and each one comes
+back with no violations. The same test also checks that the skip link is the first
+focusable element, that every input carries an accessible name, that the active screen is
+marked with `aria-current`, and that the live region is wired up. You can run it on its own
+with `npm run test:a11y`.
+
+The jsdom run turns off the axe `color-contrast` rule, since jsdom has no layout engine to
+measure the rendered boxes. The contrast is verified instead with the axe DevTools
+extension on the running app and is documented in the table above. The full success-
+criteria mapping lives in [VPAT.md](./VPAT.md), and the manual keyboard and screen-reader
+passes are recorded in [TESTING_CHECKLIST.md](./TESTING_CHECKLIST.md) and
+[SCREEN_READER_SCRIPT.md](./SCREEN_READER_SCRIPT.md).
+
+The axe pass produced two fixes. The top toolbar is now wrapped in a `<header>` banner so
+that every part of the shell sits inside a landmark, and the redundant `role="table"` on
+the native shortcuts table was removed.
+
 ## Known gaps
 
-A few things are not done yet. The screen reader coverage is incomplete, and the search
-results area still needs more ARIA work. There is no automated axe-core run, only manual
-passes with NVDA and the keyboard. Forms validate when you submit rather than as you type,
-which is something planned for Week 8.
+OS-level pointer handedness and mouse-button swapping remain out of scope (they belong to
+the operating system); the in-app Left-Handed Layout toggle and the keyboard-first design
+cover the app's side. Automated contrast checking depends on the axe DevTools extension
+rather than the headless jsdom run.

@@ -1,0 +1,17 @@
+{
+  "tool": "axe-core 4.10.2",
+  "engine": "Electron 31.7.7 (Chromium 126.0.6478.234)",
+  "date": "2026-07-08",
+  "states": {
+    "login": {
+      "violations": [],
+      "passes": 33,
+      "incomplete": 2
+    },
+    "appShell": {
+      "violations": [],
+      "passes": 39,
+      "incomplete": 0
+    }
+  }
+}

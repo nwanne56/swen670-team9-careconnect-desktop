@@ -1,0 +1,166 @@
+{
+  "engine": "Electron 31.7.7 (Chromium 126.0.6478.234)",
+  "date": "2026-07-08",
+  "login": [
+    {
+      "role": "link",
+      "name": "Skip to main content",
+      "state": []
+    },
+    {
+      "role": "main",
+      "name": "",
+      "state": []
+    },
+    {
+      "role": "form",
+      "name": "Welcome back",
+      "state": []
+    },
+    {
+      "role": "heading",
+      "name": "Welcome back",
+      "state": [
+        "level 1"
+      ]
+    },
+    {
+      "role": "textbox",
+      "name": "Email address",
+      "state": [
+        "required"
+      ]
+    },
+    {
+      "role": "checkbox",
+      "name": "Remember me",
+      "state": [
+        "not checked/off"
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Forgot password?",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Sign In",
+      "state": []
+    },
+    {
+      "role": "textbox",
+      "name": "Password",
+      "state": [
+        "required"
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Show password",
+      "state": [
+        "not pressed"
+      ]
+    },
+    {
+      "role": "switch",
+      "name": "High contrast mode",
+      "state": [
+        "not checked/off"
+      ]
+    }
+  ],
+  "appShell": [
+    {
+      "role": "link",
+      "name": "Skip to main content",
+      "state": []
+    },
+    {
+      "role": "banner",
+      "name": "",
+      "state": []
+    },
+    {
+      "role": "navigation",
+      "name": "Main navigation",
+      "state": []
+    },
+    {
+      "role": "main",
+      "name": "",
+      "state": []
+    },
+    {
+      "role": "complementary",
+      "name": "Quick info",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Hide Panel",
+      "state": [
+        "not pressed"
+      ]
+    },
+    {
+      "role": "heading",
+      "name": "Recent Activity",
+      "state": [
+        "level 2"
+      ]
+    },
+    {
+      "role": "button",
+      "name": "Home",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Notifications 4",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Profile",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Settings",
+      "state": []
+    },
+    {
+      "role": "searchbox",
+      "name": "Search CareConnect",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Dashboard",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Notifications 4",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Profile",
+      "state": []
+    },
+    {
+      "role": "button",
+      "name": "Settings",
+      "state": []
+    },
+    {
+      "role": "heading",
+      "name": "Good morning, Alex",
+      "state": [
+        "level 1"
+      ]
+    }
+  ]
+}

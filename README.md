@@ -40,7 +40,28 @@ npm test
 ```
 
 Jest + React Testing Library are configured with coverage thresholds aligned to
-the Week 8 requirement (minimum 60%).
+the 60% minimum requirement.
+
+## Accessibility testing
+
+Automated accessibility checks run with axe-core (via `jest-axe`) as part of the suite:
+
+```bash
+npm run test:a11y     # axe-core over the login screen and app shell
+```
+
+It asserts that both states have no axe violations, and it also checks the skip link, the
+input labelling, the `aria-current` markers, and the live region. For the axe DevTools
+screenshot, run the [axe DevTools](https://www.deque.com/axe/devtools/) extension against
+the running app after `npm start`. The jsdom run skips the axe `color-contrast` rule, since
+jsdom has no layout engine, so the contrast is documented and verified with the extension
+instead.
+
+Full accessibility documentation:
+- [docs/VPAT.md](docs/VPAT.md) — WCAG 2.1 Level AA conformance (VPAT 2.5)
+- [docs/TESTING_CHECKLIST.md](docs/TESTING_CHECKLIST.md) — keyboard + screen-reader checklist
+- [docs/SCREEN_READER_SCRIPT.md](docs/SCREEN_READER_SCRIPT.md) — VoiceOver walkthrough script
+- [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md) — focus order, focus states, WCAG mapping
 
 ## Package (Windows)
 
@@ -54,7 +75,8 @@ npm run package:win
 careconnect-desktop/
 ├─ test/
 │  ├─ keyboard-utils.test.js
-│  └─ react-widgets.test.js
+│  ├─ react-widgets.test.js
+│  └─ accessibility.test.js   # axe-core (jest-axe) audit of login + app shell
 ├─ src/
 │  ├─ main.js            # Electron main process and the native menu bar
 │  ├─ preload.js         # contextBridge: menu channel and auth state (no Node in the renderer)
@@ -66,7 +88,10 @@ careconnect-desktop/
 │     └─ app.js            # Routing, screen rendering, keyboard, focus, accessibility settings
 └─ docs/
    ├─ KEYBOARD_SHORTCUTS.md   # The full shortcut sheet
-   └─ ACCESSIBILITY.md        # Focus order, focus states, WCAG mapping
+   ├─ ACCESSIBILITY.md        # Focus order, focus states, WCAG mapping
+   ├─ VPAT.md                 # WCAG 2.1 AA conformance (VPAT 2.5)
+   ├─ TESTING_CHECKLIST.md    # Keyboard + screen-reader checklist
+   └─ SCREEN_READER_SCRIPT.md # VoiceOver walkthrough script
 ```
 
 ## Keyboard quickstart

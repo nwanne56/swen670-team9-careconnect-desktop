@@ -19,7 +19,7 @@
 
   function KeyboardShortcutTable(props) {
     const shortcuts = Array.isArray(props.shortcuts) ? props.shortcuts : [];
-    return e('table', { className: 'shortcut-table mt-2', role: 'table', 'aria-label': 'Keyboard shortcuts' }, [
+    return e('table', { className: 'shortcut-table mt-2', 'aria-label': 'Keyboard shortcuts' }, [
       e('thead', { key: 'thead' }, e('tr', {}, [
         e('th', { key: 'h-shortcut' }, 'Shortcut'),
         e('th', { key: 'h-action' }, 'Action'),
